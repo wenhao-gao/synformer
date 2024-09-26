@@ -1,0 +1,6 @@
+*
+!.gitignore
+!rxn_templates/
+!rxn_templates/*.txt
+!receptors/
+!receptors/*.pdbqt
