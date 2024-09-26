@@ -1,6 +1,6 @@
-# synformer_dev
+# synformer
 
-This repo contaisn the main code for SynFormer model. **This repo is for development purposes [DO NOT PUBLIC THIS]**
+This repo contaisn the main code for SynFormer model. To run the model, you need to first download the list of building blocks. We only provide a 5k building block list for test purpose.
 
 # TO-DOs
 
