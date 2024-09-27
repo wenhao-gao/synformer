@@ -96,29 +96,3 @@ def create_reactant_reaction_matrix_cache(
     with open(cache_path, "wb") as f:
         pickle.dump(m, f)
     return m
-
-# def create_reactant_reaction_matrix_cache(
-#     reactant_path: pathlib.Path,
-#     reaction_path: pathlib.Path,
-#     cache_path: pathlib.Path
-# ):
-#     # rxns = ReactionContainer(read_reaction_file(reaction_path))
-#     rxns_all = read_reaction_file(reaction_path)
-#     mols = list(read_mol_file(reactant_path))
-#     # import ipdb; ipdb.set_trace()
-
-#     # rxns = ReactionContainer(rxns[25:30])
-#     # rxns = ReactionContainer([rxns[20]]); m = ReactantReactionMatrix(mols, rxns)
-#     # rxns = ReactionContainer(rxns)
-#     # m = ReactantReactionMatrix(mols, rxns)
-
-#     for i in range(65, 75):
-
-#         try:
-#             rxns = ReactionContainer([rxns_all[i]])
-#             m = ReactantReactionMatrix(mols, rxns)
-#         except Exception as e:
-#             print(f"Error message: {e}")
-#             print(f"Error in reaction {i}")
-
-#     return m
