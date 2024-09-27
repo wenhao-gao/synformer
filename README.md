@@ -48,6 +48,8 @@ python sample.py \
 
 ## Reference
 
+If you find our code/model useful, please cite our papers:
+
 ```bibtex
 @article{gao2024synformer,
   title={Generative artificial intelligence for navigating synthesizable chemical space},
