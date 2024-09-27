@@ -14,7 +14,7 @@ conda env create -f env.yml -n synformer
 conda activate synformer
 
 # Install SynFormer package
-pip install -e .
+pip install --no-deps -e .
 ```
 
 ### Building Block Database
@@ -22,7 +22,7 @@ pip install -e .
 We provide preprocessed building block data. You can download it from [here](#link) and put it in the `data` directory.
 
 However, the data is derived from Enamine's building block catalog, which are **available only upon request**.
-Therefore, you should first request the data from Enamine [here](https://enamine.net/building-blocks/building-blocks-catalog) and download the <ins>US Stock</ins> catalog into the `data` directory.
+Therefore, you should first request the data from Enamine [here](https://enamine.net/building-blocks/building-blocks-catalog) and download the <ins>US Stock</ins> catalog into the `data/building_blocks` directory.
 Then run the following script which will check whether you have a copy of the Enamine's catalog and unarchive the preprocessed data for you:
 ```bash
 python scripts/unarchive_wizard.py

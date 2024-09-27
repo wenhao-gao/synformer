@@ -11,8 +11,8 @@ from rich.prompt import Confirm
 from rich.rule import Rule
 from rich.table import Table
 
-from chemprojector.chem.mol import read_mol_file
-from chemprojector.tools.crypt import decrypt_message, load_encrypted_pack
+from synformer.chem.mol import read_mol_file
+from synformer.utils.crypt import decrypt_message, load_encrypted_pack
 
 _US_Stock_prefix = "Enamine_Rush-Delivery_Building_Blocks-US"
 
@@ -33,14 +33,13 @@ and unarchive the data.
 ## Instruction
 
 1. Prepare the archived preprocessed data.
-    - Download the archive from
-      [https://drive.google.com/file/d/1scui0RZ8oeroDAafnw4jgTi3yKtXxXpe/view?usp=drive_link](https://drive.google.com/file/d/1scui0RZ8oeroDAafnw4jgTi3yKtXxXpe/view?usp=drive_link)
-    - Put the archive file `processed.zip` into the `data` directory.
+    - Download the archive from the link in the "Building Block Database" section of README.
+    - Put the archive file `processed.zip` into the `data/building_blocks` directory.
 2. Prepare Enamine's building block catalog.
     - Request the Enamine's building block catalog on
       [https://enamine.net/building-blocks/building-blocks-catalog](https://enamine.net/building-blocks/building-blocks-catalog)
     - Once you are approved, download the **US Stock** catalog from the same web page.
-    - Unzip the catalog archive and put the `.sdf` file into the `data` directory.
+    - Unzip the catalog archive and put the `.sdf` file into the `data/building_blocks` directory.
 3. Run this script.
     - This script will automatically verify the Enamine's catalog file in the `data` directory and unarchive the
       preprocessed data for you.
@@ -56,7 +55,7 @@ def check_archive():
 
 
 def check_enamine():
-    data_dir = pathlib.Path("data")
+    data_dir = pathlib.Path("data/building_blocks")
     for file in data_dir.iterdir():
         if file.name.startswith(_US_Stock_prefix) and file.suffix == ".sdf":
             return file.absolute(), f"[green]:white_check_mark: File found: {file}"

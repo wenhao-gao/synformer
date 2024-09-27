@@ -1,5 +1,4 @@
 rdkit>=2023.09
-openbabel
 pytdc
 
 torch>=2.0
@@ -16,6 +15,8 @@ types-pyyaml
 joblib
 omegaconf
 gitpython
+cryptography
+rich
 
 matplotlib
 seaborn
