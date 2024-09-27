@@ -9,7 +9,6 @@ scikit-learn
 
 numpy
 pandas
-
 pyyaml
 types-pyyaml
 joblib
