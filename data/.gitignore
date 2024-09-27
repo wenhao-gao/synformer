@@ -4,3 +4,4 @@
 !rxn_templates/*.txt
 !receptors/
 !receptors/*.pdbqt
+!trained_weights/
