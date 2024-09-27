@@ -18,6 +18,10 @@ packages = ["synformer"]
 version = {attr = "synformer.__version__"}
 dependencies = {file = ["requirements.txt"]}
 
+[tool.setuptools.package-data]
+# Specify patterns for files within your package that should be included
+"*" = ["*.md", "*.txt", "*.csv", "data/*"]
+
 [tool.black]
 line-length = 119
 target-version = ['py310']
