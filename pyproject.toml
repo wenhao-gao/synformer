@@ -1,0 +1,12 @@
+[tool.black]
+line-length = 119
+target-version = ['py310']
+
+[tool.isort]
+extra_standard_library = "typing_extensions,mypy,mypy_extensions"
+profile = "black"
+
+[tool.autoflake]
+remove-all-unused-imports = true
+expand-star-imports = true
+ignore-init-module-imports = true
