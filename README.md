@@ -48,4 +48,17 @@ python sample.py \
 
 ## Reference
 
+```bibtex
+@article{gao2024synformer,
+  title={Generative artificial intelligence for navigating synthesizable chemical space},
+  author={Wenhao Gao and Shitong Luo and Connor W. Coley},
+  year={2024}
+}
 
+@inproceedings{luo2024chemprojector,
+  title={Projecting Molecules into Synthesizable Chemical Spaces},
+  author={Shitong Luo and Wenhao Gao and Zuofan Wu and Jian Peng and Connor W. Coley and Jianzhu Ma},
+  booktitle={Forty-first International Conference on Machine Learning},
+  year={2024}
+}
+```
