@@ -437,3 +437,64 @@ def run_parallel_sampling_return_smiles_no_early_stop(
     pool.end()
 
     return df_merge
+
+def run_sampling_one_cpu(
+    input: Molecule,
+    model_path: pathlib.Path,
+    mat_path: pathlib.Path,
+    fpi_path: pathlib.Path,
+    search_width: int = 24,
+    exhaustiveness: int = 64,
+    time_limit: int = 180,
+    max_results: int = 100,
+    max_evolve_steps: int = 12,
+    sort_by_scores: bool = True,
+) -> pd.DataFrame:
+
+    ckpt = torch.load(model_path, map_location="cpu")
+    config = OmegaConf.create(ckpt["hyper_parameters"]["config"])
+    model = Synformer(config.model)
+    model.load_state_dict({k[6:]: v for k, v in ckpt["state_dict"].items()})
+    model.eval()
+    _model = model
+
+    state_pool_opt={
+        "factor": search_width,
+        "max_active_states": exhaustiveness,
+        "sort_by_score": sort_by_scores,
+    }
+    _fpindex: FingerprintIndex = pickle.load(open(fpi_path, "rb"))
+    _rxn_matrix: ReactantReactionMatrix = pickle.load(open(mat_path, "rb"))
+
+    try:
+        sampler = StatePool(
+            fpindex=_fpindex,
+            rxn_matrix=_rxn_matrix,
+            mol=input,
+            model=_model,
+            **state_pool_opt,
+        )
+        tl = TimeLimit(time_limit)
+        for _ in range(max_evolve_steps):
+            sampler.evolve(gpu_lock=None, show_pbar=False, time_limit=tl)
+            max_sim = max(
+                [
+                    p.molecule.sim(input, FingerprintOption.morgan_for_tanimoto_similarity())
+                    for p in sampler.get_products()
+                ]
+                or [-1]
+            )
+            if max_sim == 1.0:
+                break
+
+        df = sampler.get_dataframe()[: max_results]
+
+        # if len(df) == 0:
+        #     print(f"{input.smiles}: No results for {next_task.smiles}")
+        # else:
+        #     max_sim = df["score"].max()
+        #     print(f"{input.smiles}: {max_sim:.3f} {next_task.smiles}")
+    except KeyboardInterrupt:
+        print(f"Exiting due to KeyboardInterrupt")
+
+    return df
