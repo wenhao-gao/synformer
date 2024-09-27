@@ -1,3 +1,23 @@
+[project]
+name = "synformer"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Wenhao Gao", email = "gaowh19@gmail.com"},
+    {name = "Shitong Luo", email = "luost26@gmail.com"},
+    {name = "Connor W. Coley", email = "ccoley@mit.edu"}
+]
+description = "SynFormer: Generative Model for Synthesizable Molecule Generation"
+readme = "README.md"
+requires-python = ">=3.10"
+dynamic = ["version", "dependencies"]
+
+[tool.setuptools]
+packages = ["synformer"]
+
+[tool.setuptools.dynamic]
+version = {attr = "synformer.__version__"}
+dependencies = {file = ["requirements.txt"]}
+
 [tool.black]
 line-length = 119
 target-version = ['py310']
