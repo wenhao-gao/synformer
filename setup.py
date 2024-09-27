@@ -15,15 +15,14 @@ with open(ver_file) as f:
 this_directory = path.abspath(path.dirname(__file__))
 
 
-# # Check if README.md exists and read its content
-# long_description = ""
-# if path.exists("README.md"):
-#     with open("README.md", "r", encoding="utf-8") as f:
-#         long_description = f.read()
-# else:
-#     long_description = "Long description not available."
+# Check if README.md exists and read its content
+long_description = ""
+if path.exists("README.md"):
+    with open("README.md", "r", encoding="utf-8") as f:
+        long_description = f.read()
+else:
+    long_description = "Long description not available."
 
-long_description = "Long description not available."
 # read the contents of requirements.txt
 with open(path.join(this_directory, "env.txt"),
           encoding="utf-8") as f:
