@@ -1,5 +1,4 @@
 rdkit>=2023.09
-pytdc
 
 torch>=2.0
 pytorch-lightning>=2.0
