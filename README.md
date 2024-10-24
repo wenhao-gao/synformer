@@ -55,7 +55,10 @@ Note that one can run our model in either CPU or GPU, but due to the wall time l
 
 ### GraphGA-SF
 
-TODO
+You can run the GraphGA-SF model with following command:
+```bash
+python experiments/graphga_sf_opt.py --oracle QED --name QED
+```
 
 ## Reference
 
